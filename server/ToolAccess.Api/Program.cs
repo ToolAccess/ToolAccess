@@ -1,8 +1,8 @@
+using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
+using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
-
-// Add services to the container.
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -14,6 +14,9 @@ builder.Services.AddSwaggerGen(opt =>
     opt.SwaggerDoc("v1", new OpenApiInfo { Title = "My Api", Version = "v1" });
 
 });
+
+builder.Services.AddDbContext<DbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("ApplicationDbContext")));
 
 var app = builder.Build();
 
