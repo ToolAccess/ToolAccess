@@ -1,0 +1,13 @@
+.category-list {
+    text-align: center; /* Center the cards horizontally */
+    white-space: nowrap; /* Prevent line breaks */
+    overflow-x: auto; /* Enable horizontal scrolling */
+    padding: 10px 0;
+  }
+  
+  @media (max-width: 768px) {
+    .category-list {
+      overflow-x: hidden; /* Hide horizontal scrollbar on smaller screens */
+    }
+  }
+  
