@@ -1,11 +1,16 @@
 export interface ITool {
+    id:number,
     name: string,
     type: string,
+    imageUrl: string,
     description: string,
-    productId: number,
-}
+    standardPrice: number,
+    discountPrice: number,
+    hasOffer: boolean,
+    offerOption: number,
+    rentalPeriod: number,
+    isAvailable: false,
+    userId: number,
+    category: string
 
-export interface IToolResponse {
-    data: ITool[],
-    totalCount: number,
 }

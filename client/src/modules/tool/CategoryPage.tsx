@@ -3,7 +3,7 @@ import CategoryCard from './CategoryCard';
 import home from '../../assets/home.png';
 import './CategoryPage.css'
 interface CategoryPageProps {
-  categories: string[];
+  categories: string[] | undefined;
 }
 
 const getImageSource = (category: string): string => {
@@ -24,7 +24,7 @@ const CategoryPage: React.FC<CategoryPageProps> = ({ categories }) => {
     <div>
       <h1>Our Categories</h1>
       <div className="category-list">
-        {categories.map((category) => (
+        {categories?.map((category) => (
           <CategoryCard
             key={category}
             category={category}
