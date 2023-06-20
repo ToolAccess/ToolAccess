@@ -6,15 +6,15 @@
     border: 1px solid #ccc;
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    display: inline-block; /* Display the cards in a row */
-    vertical-align: top; /* Align the cards to the top */
-    box-sizing: border-box; /* Include padding and border in the width calculation */
+    display: inline-block;
+    vertical-align: top;
+    box-sizing: border-box;
   }
   
   .category-image-container {
     width: 100%;
     height: 0;
-    padding-bottom: 60%; /* Adjust the padding-bottom to control the aspect ratio of the image */
+    padding-bottom: 60%;
     position: relative;
   }
   

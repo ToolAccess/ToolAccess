@@ -1,10 +1,8 @@
-import React from 'react';
+import { useState, useEffect } from 'react';
 import CategoryCard from './CategoryCard';
 import home from '../../assets/home.png';
-import './CategoryPage.css'
-interface CategoryPageProps {
-  categories: string[] | undefined;
-}
+import './CategoryPage.css';
+import { fetchCategories } from './apis';
 
 const getImageSource = (category: string): string => {
   switch (category) {
@@ -19,12 +17,27 @@ const getImageSource = (category: string): string => {
   }
 };
 
-const CategoryPage: React.FC<CategoryPageProps> = ({ categories }) => {
+const CategoryPage = () => {
+  const [categories, setCategories] = useState<string[]>([]);
+
+  const getCategories = async () => {
+      const fetchedCategories = await fetchCategories();
+      setCategories(fetchedCategories);
+  };
+
+  useEffect(() => {
+    getCategories();
+  }, []);
+
+  const handleCategoryClick = (category: string) => {
+    window.location.href = `/category/${encodeURIComponent(category)}`;
+  };
+
   return (
     <div>
       <h1>Our Categories</h1>
       <div className="category-list">
-        {categories?.map((category) => (
+        {categories.map((category) => (
           <CategoryCard
             key={category}
             category={category}
@@ -35,10 +48,6 @@ const CategoryPage: React.FC<CategoryPageProps> = ({ categories }) => {
       </div>
     </div>
   );
-};
-
-const handleCategoryClick = (category: string) => {
-  window.location.href = `/category/${encodeURIComponent(category)}`;
 };
 
 export default CategoryPage;
