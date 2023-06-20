@@ -5,16 +5,12 @@ import { fetchTool } from './apis';
 
 const ToolPage: React.FC = () => {
   const { id } = useParams();
-  const [tool, setTool] = useState<ITool | null>(null);
+  const [tool, setTool] = useState<ITool>();
 
   useEffect(() => {
     const getTool = async () => {
-      try {
         const fetchedTool = await fetchTool(id as string);
         setTool(fetchedTool);
-      } catch (error) {
-        console.error('Error fetching tool:', error);
-      }
     };
 
     getTool();
