@@ -18,7 +18,7 @@ export const fetchTools = async (): Promise<ITool[]> => {
       const tools = response.data as ITool[];
       return tools;
     } catch (error) {
-        console.error('Error fetching categories:', error);
+        console.error('Error fetching tools:', error);
         throw error;
       }
 };
@@ -33,3 +33,14 @@ export const fetchTool = async (id: string): Promise<ITool> => {
     throw error;
   }
 };
+
+export const fetchToolsByQuery = async (query: string): Promise<ITool[]> => {
+  try {
+    const response = await axios.get(`http://localhost:5246/api/tools/search?query=${query}`);
+    const tools = response.data as ITool[];
+    return tools;
+  } catch (error) {
+    console.error('Error fetching tools by query:', error);
+    throw error;
+  }
+}

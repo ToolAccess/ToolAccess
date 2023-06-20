@@ -1,27 +1,37 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useLocation, useNavigate } from 'react-router-dom';
 import { ITool } from './interfaces';
-import { fetchTools } from './apis';
+import { fetchTools, fetchToolsByQuery } from './apis';
 import ToolCard from './ToolCard';
 
 interface ToolListPageParams extends Record<string, string> {
   category: string;
 }
 
-const ProductListPage: React.FC = () => {
+const ToolListPage: React.FC = () => {
   const { category } = useParams<ToolListPageParams>();
+  const location = useLocation();
   const navigate = useNavigate();
   const [tools, setTools] = useState<ITool[]>([]);
 
   useEffect(() => {
-    const getTools = async () => {
+    const fetchData = async () => {
+      if (location.search) {
+        const searchParams = new URLSearchParams(location.search);
+        const query = searchParams.get('query');
+        if (query) {
+          const searchResults = await fetchToolsByQuery(query);
+          setTools(searchResults);
+        }
+      } else {
         const fetchedTools = await fetchTools();
         const filteredTools = fetchedTools.filter((tool) => tool.category === category);
         setTools(filteredTools);
+      }
     };
 
-    getTools();
-  }, [category]);
+    fetchData();
+  }, [category, location.search]);
 
   const handleToolClick = (tool: ITool) => {
     navigate(`/tools/${tool.id}`);
@@ -29,18 +39,18 @@ const ProductListPage: React.FC = () => {
 
   return (
     <div>
-      <h1>Product List - {category}</h1>
+      {location.search ? (
+        <h1>Search Results</h1>
+      ) : (
+        <h1>Product List - {category}</h1>
+      )}
       <div className="tool-list">
         {tools.map((tool) => (
-          <ToolCard
-            key={tool.id}
-            tool={tool}
-            onClick={() => handleToolClick(tool)}
-          />
+          <ToolCard key={tool.id} tool={tool} onClick={() => handleToolClick(tool)} />
         ))}
       </div>
     </div>
   );
 };
 
-export default ProductListPage;
+export default ToolListPage;

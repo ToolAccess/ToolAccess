@@ -59,6 +59,19 @@ public class ToolController : ControllerBase
         return Ok(tools);
     }
 
+    [HttpGet("search")]
+    public async Task<ActionResult<IEnumerable<Tool>>> SearchTools(string query)
+    {
+        var tools = await _context.Tools
+            .Where(t => t.Name.Contains(query))
+            .ToListAsync();
+
+        if (tools == null || tools.Count == 0)
+            return NotFound();
+
+        return Ok(tools);
+    }
+
     [HttpPost]
     public async Task<ActionResult<Tool>> CreateTool(Tool tool)
     {
