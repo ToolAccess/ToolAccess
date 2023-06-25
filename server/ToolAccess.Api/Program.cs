@@ -31,9 +31,12 @@ app.UseSwagger();
 app.UseSwaggerUI();
 
 app.UseCors(cors =>
-   {
-       cors.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin();
-   });
+{
+    cors.WithOrigins("https://happy-flower-0f252d003.3.azurestaticapps.net")
+        .AllowAnyHeader()
+        .AllowAnyMethod()
+        .AllowCredentials();
+});
 
 app.UseHttpsRedirection();
 
