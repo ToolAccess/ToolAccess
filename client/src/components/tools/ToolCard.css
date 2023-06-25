@@ -1,0 +1,25 @@
+.tool-card {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px;
+    margin-bottom: 20px;
+    text-align: center;
+    cursor: pointer;
+  }
+  
+  .tool-card__name {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  .tool-card__image {
+    width: 100%;
+    max-height: 200px;
+    object-fit: cover;
+    margin-bottom: 10px;
+  }
+  
+  .tool-card__price {
+    font-weight: bold;
+  }
+  
