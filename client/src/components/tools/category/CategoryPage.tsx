@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import home from '../../../assets/home.png';
 import './CategoryPage.css';
 import { CategoryCard, fetchCategories } from '..';
+import { useNavigate } from 'react-router-dom';
 
 
 const getImageSource = (category: string): string => {
@@ -19,6 +20,7 @@ const getImageSource = (category: string): string => {
 
 const CategoryPage = () => {
   const [categories, setCategories] = useState<string[]>([]);
+  const navigate = useNavigate();
 
   const getCategories = async () => {
       const fetchedCategories = await fetchCategories();
@@ -30,7 +32,7 @@ const CategoryPage = () => {
   }, []);
 
   const handleCategoryClick = (category: string) => {
-    window.location.href = `/category/${encodeURIComponent(category)}`;
+    navigate(`/category/${encodeURIComponent(category)}`);
   };
 
   return (
