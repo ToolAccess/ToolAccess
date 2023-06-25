@@ -1,0 +1,16 @@
+.tool-list-page {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  
+  .tool-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  .tool-list__card {
+    width: calc(33.33% - 10px);
+    margin-bottom: 20px;
+  }
+  

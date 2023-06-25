@@ -1,10 +1,5 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-
-import ToolListPage from './modules/tool/ToolListPage';
-import CategoryPage from './modules/tool/CategoryPage';
-import Header from './modules/components/Header';
-import Footer from './modules/components/Footer';
-import ToolPage from './modules/tool/ToolPage';
+import { CategoryPage, Footer, Header, ToolListPage, ToolPage } from '.';
 
 const App: React.FC = () => {
   return (

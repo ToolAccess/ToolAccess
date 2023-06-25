@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useLocation, useNavigate } from 'react-router-dom';
-import { ITool } from './interfaces';
-import { fetchTools, fetchToolsByQuery } from './apis';
-import ToolCard from './ToolCard';
+import { ITool, ToolCard, fetchTools, fetchToolsByQuery } from '.';
+import './ToolListPage.css';
 
 interface ToolListPageParams extends Record<string, string> {
   category: string;

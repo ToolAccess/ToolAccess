@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
-import CategoryCard from './CategoryCard';
-import home from '../../assets/home.png';
+import home from '../../../assets/home.png';
 import './CategoryPage.css';
-import { fetchCategories } from './apis';
+import { CategoryCard, fetchCategories } from '..';
+
 
 const getImageSource = (category: string): string => {
   switch (category) {

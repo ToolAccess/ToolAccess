@@ -1,8 +1,6 @@
-import React, { useState } from 'react';
-import SearchBar from './SearchBar';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { fetchToolsByQuery } from '../tool/apis';
-import { ITool } from '../tool/interfaces';
+import { fetchToolsByQuery, ITool, SearchBar } from '..';
 
 const Header: React.FC = () => {
   const navigate = useNavigate();
