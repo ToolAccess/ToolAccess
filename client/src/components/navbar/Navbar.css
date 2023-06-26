@@ -1,0 +1,30 @@
+.navbar__list {
+    list-style-type: none;
+    padding: 0;
+    margin-bottom: 20px;
+  }
+  
+  .navbar__item {
+    display: inline;
+  }
+  
+  .navbar__item::before {
+    content: " > ";
+  }
+  
+  .navbar__item:first-child::before {
+    content: "";
+  }
+  
+  .navbar__link {
+    color: black;
+    text-decoration: none;
+  }
+  
+  .navbar__product {
+    background-color: gray;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+  }
+  
