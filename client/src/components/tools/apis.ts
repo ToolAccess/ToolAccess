@@ -1,7 +1,8 @@
 import { ITool } from "./interfaces";
 import axios from "axios";
 
-const apiUrl = 'https://tool-server.azurewebsites.net';
+// const apiUrl = 'https://tool-server.azurewebsites.net';
+const apiUrl = 'http://localhost:5246'
 
 export const fetchCategories = async (): Promise<string[]> => {
   try {

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { fetchToolsByQuery, ITool, SearchBar } from '..';
+import './Header.css'
 
 const Header: React.FC = () => {
   const navigate = useNavigate();
