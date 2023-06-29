@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
-import home from '../../../assets/home.png';
+import home from '../../../../assets/home.png';
 import './CategoryPage.css';
-import { CategoryCard, fetchCategories } from '..';
 import { useNavigate } from 'react-router-dom';
+import { fetchCategories } from '../..';
+import { CategoryCard } from '..';
 
 
 const getImageSource = (category: string): string => {

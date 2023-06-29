@@ -12,7 +12,11 @@ const Header: React.FC = () => {
       const tools = await fetchToolsByQuery(query);
       console.log('Search results:', tools);
       setSearchResults(tools);
-      navigate(`/search-results?query=${query}`);
+      if (tools.length === 0) {
+        navigate('/not-found');
+      } else {
+        navigate(`/search-results?query=${query}`);
+      }
     } catch (error) {
       console.error('Error searching for tools:', error);
     }

@@ -1,0 +1,30 @@
+.tool-not-found {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 60vh;
+    text-align: center;
+    font-family: Arial, sans-serif;
+  }
+  
+  .tool-not-found__title {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .tool-not-found__message {
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+  
+  .tool-not-found__link {
+    font-size: 16px;
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .tool-not-found__link:hover {
+    text-decoration: underline;
+  }
+  

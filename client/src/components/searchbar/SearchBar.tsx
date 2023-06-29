@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-
+import './SearchBar.css';
 interface SearchBarProps {
   onSearch: (query: string) => Promise<void>;
 }
