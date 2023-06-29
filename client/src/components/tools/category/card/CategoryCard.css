@@ -11,14 +11,14 @@
     box-sizing: border-box;
   }
   
-  .category-image-container {
+  .category-card__image-container {
     width: 100%;
     height: 0;
     padding-bottom: 60%;
     position: relative;
   }
   
-  .category-image-container img {
+  .category-card__image {
     position: absolute;
     top: 0;
     left: 0;
@@ -28,9 +28,10 @@
     border-radius: 5px;
   }
   
-  .category-card h2 {
-    font-size: 14px;
+  .category-card__title {
+    font-size: 20px;
     font-weight: bold;
     margin-bottom: 5px;
+    color: #E3655B;
   }
   

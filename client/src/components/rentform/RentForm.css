@@ -1,0 +1,44 @@
+.rent-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+}
+
+.form-title {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #E3655B;
+}
+
+.rent-form form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.rent-form label {
+  margin-bottom: 10px;
+}
+
+.rent-form input {
+  padding: 5px;
+  margin-left: 5px;
+}
+
+.submit-button {
+    margin-left: 10px;
+    background-color: #E3655B;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  
+  .submit-button:hover {
+    background-color: #DB5461;
+  }
+  

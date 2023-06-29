@@ -38,7 +38,7 @@ const CategoryPage = () => {
 
   return (
     <div>
-      <h1>Our Categories</h1>
+      <h1 className="categories-title">Explore by purpose and find the right tool:</h1>
       <div className="category-list">
         {categories.map((category) => (
           <CategoryCard

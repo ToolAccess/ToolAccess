@@ -25,15 +25,16 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
   };
 
   return (
-    <div>
+    <div className="search-container">
       <input
         type="text"
         value={searchQuery}
         onChange={handleInputChange}
         onKeyDown={handleKeyDown}
-        placeholder="Search by product..."
+        placeholder="🔎 Here you can search the tool you need"
+        className="search-input"
       />
-      <button onClick={handleSearch}>Search</button>
+      <button onClick={handleSearch} className="search-button">Search</button>
     </div>
   );
 };
