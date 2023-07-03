@@ -1,0 +1,27 @@
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 200px;
+    background-color: #4C5B5C;
+  }
+  
+  .header__title {
+    margin-bottom: 30px;
+    color: #E3655B;
+  }
+  
+  .header-content {
+    display: flex;
+    align-items: center;
+  }
+  
+  .search-bar {
+    margin-right: 10px;
+  }
+  
+  .rent-button {
+    margin-left: 50px;
+  }
+  

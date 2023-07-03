@@ -1,5 +1,5 @@
 import { ITool } from "./interfaces";
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 
 const apiUrl = 'https://tool-server.azurewebsites.net';
 // const apiUrl = 'http://localhost:5246'
@@ -42,8 +42,18 @@ export const fetchToolsByQuery = async (query: string): Promise<ITool[]> => {
     const response = await axios.get(`${apiUrl}/api/tools/search?query=${query}`);
     const tools = response.data as ITool[];
     return tools;
-  } catch (error) {
+  } catch (error: unknown) {
+    if (isAxiosError(error)) {
+      if (error.response?.status === 404) {
+        return []; // Return an empty array when the product is not found
+      }
+    }
+
     console.error('Error fetching tools by query:', error);
     throw error;
   }
+};
+
+const isAxiosError = (error: unknown): error is AxiosError => {
+  return (error as AxiosError).isAxiosError !== undefined;
 };

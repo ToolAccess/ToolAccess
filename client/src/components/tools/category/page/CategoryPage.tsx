@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
-import home from '../../../assets/home.png';
+import home from '../../../../assets/home.png';
 import './CategoryPage.css';
-import { CategoryCard, fetchCategories } from '..';
 import { useNavigate } from 'react-router-dom';
+import { fetchCategories } from '../..';
+import { CategoryCard } from '..';
 
 
 const getImageSource = (category: string): string => {
@@ -37,7 +38,7 @@ const CategoryPage = () => {
 
   return (
     <div>
-      <h1>Our Categories</h1>
+      <h1 className="categories-title">Explore by purpose and find the right tool:</h1>
       <div className="category-list">
         {categories.map((category) => (
           <CategoryCard

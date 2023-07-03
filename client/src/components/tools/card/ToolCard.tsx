@@ -1,6 +1,6 @@
 import React from 'react';
-import { ITool } from '.';
 import './ToolCard.css';
+import { ITool } from '..';
 
 interface ToolCardProps {
   tool: ITool;
