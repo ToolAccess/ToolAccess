@@ -19,4 +19,8 @@
   .tool-page__description {
     line-height: 1.5;
   }
+
+  .tool-page__datepicker-container {
+    display: flex;
+  }
   
