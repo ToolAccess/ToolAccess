@@ -12,4 +12,6 @@ public class DbContext : Microsoft.EntityFrameworkCore.DbContext
 
     public DbSet<ToolAccess.Api.Models.User> Users { get; set; } = default!;
 
+    public DbSet<ToolAccess.Api.Models.Rental> Rental { get; set; } = default!;
+
 }

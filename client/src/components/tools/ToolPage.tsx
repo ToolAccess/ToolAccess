@@ -48,11 +48,13 @@ const ToolPage: React.FC = () => {
         <img className="tool-page__image" src={tool.imageUrl} alt={tool.name} />
         <p className="tool-page__description">Description: {tool.description}</p>
         <div className="tool-page__price">Price: {tool.standardPrice} SEK</div>
-        <div className='tool-page__datepicker-container'>
+        {
+          tool.isAvailable ? (<div className='tool-page__datepicker-container'>
           <Datepicker name="startDate" date={dates.startDate} handleDateChange={handleDateChange} maxDate={dates.endDate} />
           <Datepicker name="endDate" date={dates.endDate} handleDateChange={handleDateChange} minDate={dates.startDate} />
-        </div>
-        <button onClick={sendRentRequest}>Send Request</button>
+        </div>) : (<p>this tool is currently not available for renting</p>)
+        }
+        <button onClick={sendRentRequest}>Submit Request</button>
       </div>
     </div>
   );
