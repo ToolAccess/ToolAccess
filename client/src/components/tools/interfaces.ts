@@ -14,3 +14,14 @@ export interface ITool {
     category: string
 
 }
+
+export interface IRental {
+    rentalId: number,
+    startDate: string,
+    "endDate": string,
+    "status": string,
+    "userId": number,
+    "toolId": number,
+    "rentalPrice": number,
+    "createdAt": string
+}

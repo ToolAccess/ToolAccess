@@ -1,6 +1,6 @@
 import React, { SyntheticEvent, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { ITool, fetchTool } from '.';
+import { ITool, fetchTool, postRentalRequest } from '.';
 import { Navbar } from '..';
 import './ToolPage.css';
 import Datepicker from '../datepicker/Datepicker';
@@ -35,9 +35,10 @@ const ToolPage: React.FC = () => {
     }));
   };
 
-  const sendRentRequest = () => {
-    // some magic here
-    console.log("rent tool", dates)
+  const sendRentRequest = async () => {
+    // userid 1 for now i will change it later when we add authentication.
+    const rentalRequest = await postRentalRequest(new Date(dates.startDate).toISOString(), new Date(dates.endDate).toISOString(), 1, id);
+    console.log(rentalRequest, dates)
   };
 
   return (
@@ -52,9 +53,9 @@ const ToolPage: React.FC = () => {
           tool.isAvailable ? (<div className='tool-page__datepicker-container'>
           <Datepicker name="startDate" date={dates.startDate} handleDateChange={handleDateChange} maxDate={dates.endDate} />
           <Datepicker name="endDate" date={dates.endDate} handleDateChange={handleDateChange} minDate={dates.startDate} />
+          <button onClick={sendRentRequest}>Submit Request</button>
         </div>) : (<p>this tool is currently not available for renting</p>)
         }
-        <button onClick={sendRentRequest}>Submit Request</button>
       </div>
     </div>
   );

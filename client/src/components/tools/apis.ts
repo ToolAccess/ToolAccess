@@ -1,8 +1,8 @@
-import { ITool } from "./interfaces";
+import { IRental, ITool } from "./interfaces";
 import axios, { AxiosError } from "axios";
 
-const apiUrl = 'https://tool-server.azurewebsites.net';
-// const apiUrl = 'http://localhost:5246'
+//const apiUrl = 'https://tool-server.azurewebsites.net';
+const apiUrl = 'http://localhost:5246'
 
 export const fetchCategories = async (): Promise<string[]> => {
   try {
@@ -54,6 +54,23 @@ export const fetchToolsByQuery = async (query: string): Promise<ITool[]> => {
   }
 };
 
+export const postRentalRequest = async (startDate : string , endDate : string, userId : number, toolId : number ): Promise<IRental> => {
+  try {
+    const response = await axios.post(`${apiUrl}/api/Rentals`, {
+      userId,
+      toolId,
+      startDate,
+      endDate
+    });
+    const rental = response.data as IRental;
+    return rental;
+  } catch (error) {
+    console.error('Error fetching tool:', error);
+    throw error;
+  }
+};
+
 const isAxiosError = (error: unknown): error is AxiosError => {
   return (error as AxiosError).isAxiosError !== undefined;
 };
+
