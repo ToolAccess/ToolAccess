@@ -15,7 +15,7 @@ public class ToolController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<Tool>>> GetTools()
+    public async Task<ActionResult<IEnumerable<Tool>>> GetAllTools()
     {
         var tools = await _context.Tools.ToListAsync();
         return Ok(tools);

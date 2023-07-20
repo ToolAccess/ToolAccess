@@ -60,10 +60,15 @@ namespace ToolAccess.Api.Controllers
             {
                 return BadRequest($"The user with the id {rentalRequest.UserId} does not exist");
             }
-
-            if (await _context.Tools.FindAsync(rentalRequest.ToolId) == null) 
+            var tool = await _context.Tools.FindAsync(rentalRequest.ToolId);
+            if (tool == null) 
             {
                 return BadRequest($"The tool with the id {rentalRequest.ToolId} does not exist");
+            }
+
+            if (!tool.IsAvailable) 
+            {
+            return BadRequest($"The tool with the id {rentalRequest.ToolId} is not available for rental");
             }
 
             var newRental = new Rental {
@@ -72,9 +77,11 @@ namespace ToolAccess.Api.Controllers
                 StartDate = rentalRequest.StartDate,
                 EndDate = rentalRequest.StartDate,
                 Status = "pending",
+                createdAt = DateTime.Now.ToUniversalTime(),
             };
-
+            tool.IsAvailable = false;
             _context.Rental.Add(newRental);
+            _context.Tools.Update(tool);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetRental", new { id = newRental.RentalId }, newRental);
